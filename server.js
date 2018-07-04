@@ -1,4 +1,4 @@
-import {environments} from "./environments";
+const environments = require('./environments.js');
 
 const CronJob = require('cron').CronJob;
 
@@ -20,7 +20,7 @@ new CronJob('00 15 12 * * 1,2,3,4,5', function() {
         $('img').remove();
         $('br').remove();
         const siteHtml = $('#menu-diario-content').html();
-        markdown = turndownService.turndown(siteHtml);
+        const markdown = turndownService.turndown(siteHtml);
         web.chat.postMessage({ channel: channelId, text: markdown })
             .then((res) => {
                 // `res` contains information about the posted message
